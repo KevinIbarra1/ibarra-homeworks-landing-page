@@ -1,6 +1,7 @@
 {
   "name": "ibarra-homeworks-landing-page",
   "version": "0.1.0",
+  "description": "Ibarra HomeWorks Landing Page - Professional home services in Puerto Rico",
   "private": true,
   "scripts": {
     "dev": "next dev",
