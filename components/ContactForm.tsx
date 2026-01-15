@@ -2,12 +2,21 @@
 
 import { useState, FormEvent } from "react";
 
+/**
+ * Contact Form
+ *
+ * UI/UX Principles Applied:
+ * - Reduced friction: Only essential fields (name, phone, service)
+ * - Clear labels: Placeholders + labels for accessibility
+ * - Visual feedback: Focus states, success state
+ * - Error prevention: Required fields marked, proper input types
+ * - Progressive disclosure: Optional message field at end
+ */
 export default function ContactForm() {
   const [formData, setFormData] = useState({
     name: "",
     phone: "",
     service: "",
-    location: "",
     message: "",
   });
   const [submitted, setSubmitted] = useState(false);
@@ -17,16 +26,16 @@ export default function ContactForm() {
     setSubmitted(true);
   };
 
+  // Success state with clear confirmation
   if (submitted) {
     return (
-      <div className="rounded-xl bg-green-50 p-8 text-center">
-        <div className="mx-auto mb-4 flex h-16 w-16 items-center justify-center rounded-full bg-green-100">
+      <div className="py-8 text-center">
+        <div className="mx-auto mb-4 flex h-14 w-14 items-center justify-center rounded-full bg-emerald-100">
           <svg
-            className="h-8 w-8 text-green-600"
+            className="h-7 w-7 text-emerald-600"
             fill="none"
             stroke="currentColor"
             viewBox="0 0 24 24"
-            aria-hidden="true"
           >
             <path
               strokeLinecap="round"
@@ -36,24 +45,18 @@ export default function ContactForm() {
             />
           </svg>
         </div>
-        <h3 className="mb-2 text-xl font-semibold text-gray-900">
-          Thank You!
-        </h3>
-        <p className="text-gray-600">
-          We received your message and will contact you shortly.
-        </p>
+        <h3 className="text-lg font-semibold text-slate-900">Message Sent!</h3>
+        <p className="mt-1 text-slate-500">We&apos;ll call you within 2 hours.</p>
       </div>
     );
   }
 
   return (
-    <form onSubmit={handleSubmit} className="space-y-5">
+    <form onSubmit={handleSubmit} className="space-y-4">
+      {/* Name field */}
       <div>
-        <label
-          htmlFor="name"
-          className="mb-1 block text-sm font-medium text-gray-700"
-        >
-          Your Name *
+        <label htmlFor="name" className="sr-only">
+          Your name
         </label>
         <input
           type="text"
@@ -62,17 +65,15 @@ export default function ContactForm() {
           required
           value={formData.name}
           onChange={(e) => setFormData({ ...formData, name: e.target.value })}
-          className="w-full rounded-lg border border-gray-300 px-4 py-3 text-gray-900 placeholder-gray-400 focus:border-blue-500 focus:ring-2 focus:ring-blue-500 focus:outline-none"
-          placeholder="Juan Pérez"
+          placeholder="Your name"
+          className="w-full rounded-lg border border-slate-200 bg-slate-50 px-4 py-3 text-slate-900 placeholder-slate-400 transition-colors focus:border-amber-500 focus:bg-white focus:outline-none focus:ring-2 focus:ring-amber-500/20"
         />
       </div>
 
+      {/* Phone field - Most important for callbacks */}
       <div>
-        <label
-          htmlFor="phone"
-          className="mb-1 block text-sm font-medium text-gray-700"
-        >
-          Phone Number *
+        <label htmlFor="phone" className="sr-only">
+          Phone number
         </label>
         <input
           type="tel"
@@ -81,86 +82,64 @@ export default function ContactForm() {
           required
           value={formData.phone}
           onChange={(e) => setFormData({ ...formData, phone: e.target.value })}
-          className="w-full rounded-lg border border-gray-300 px-4 py-3 text-gray-900 placeholder-gray-400 focus:border-blue-500 focus:ring-2 focus:ring-blue-500 focus:outline-none"
-          placeholder="(787) 555-0123"
+          placeholder="Phone number"
+          className="w-full rounded-lg border border-slate-200 bg-slate-50 px-4 py-3 text-slate-900 placeholder-slate-400 transition-colors focus:border-amber-500 focus:bg-white focus:outline-none focus:ring-2 focus:ring-amber-500/20"
         />
       </div>
 
+      {/* Service selection - Helps qualify leads */}
       <div>
-        <label
-          htmlFor="service"
-          className="mb-1 block text-sm font-medium text-gray-700"
-        >
-          Service Needed *
+        <label htmlFor="service" className="sr-only">
+          Service needed
         </label>
         <select
           id="service"
           name="service"
           required
           value={formData.service}
-          onChange={(e) =>
-            setFormData({ ...formData, service: e.target.value })
-          }
-          className="w-full rounded-lg border border-gray-300 px-4 py-3 text-gray-900 focus:border-blue-500 focus:ring-2 focus:ring-blue-500 focus:outline-none"
+          onChange={(e) => setFormData({ ...formData, service: e.target.value })}
+          className="w-full appearance-none rounded-lg border border-slate-200 bg-slate-50 px-4 py-3 text-slate-900 transition-colors focus:border-amber-500 focus:bg-white focus:outline-none focus:ring-2 focus:ring-amber-500/20"
         >
-          <option value="">Select a service</option>
+          <option value="" disabled>
+            What do you need help with?
+          </option>
           <option value="kitchen">Kitchen Remodeling</option>
           <option value="bathroom">Bathroom Renovation</option>
           <option value="repairs">General Repairs</option>
-          <option value="painting">Painting Services</option>
-          <option value="flooring">Flooring Installation</option>
-          <option value="carpentry">Custom Carpentry</option>
+          <option value="painting">Painting</option>
+          <option value="flooring">Flooring</option>
           <option value="other">Other</option>
         </select>
       </div>
 
+      {/* Optional message - Progressive disclosure */}
       <div>
-        <label
-          htmlFor="location"
-          className="mb-1 block text-sm font-medium text-gray-700"
-        >
-          Your Location *
-        </label>
-        <input
-          type="text"
-          id="location"
-          name="location"
-          required
-          value={formData.location}
-          onChange={(e) =>
-            setFormData({ ...formData, location: e.target.value })
-          }
-          className="w-full rounded-lg border border-gray-300 px-4 py-3 text-gray-900 placeholder-gray-400 focus:border-blue-500 focus:ring-2 focus:ring-blue-500 focus:outline-none"
-          placeholder="Bayamón, PR"
-        />
-      </div>
-
-      <div>
-        <label
-          htmlFor="message"
-          className="mb-1 block text-sm font-medium text-gray-700"
-        >
-          Project Details
+        <label htmlFor="message" className="sr-only">
+          Additional details (optional)
         </label>
         <textarea
           id="message"
           name="message"
-          rows={4}
+          rows={3}
           value={formData.message}
-          onChange={(e) =>
-            setFormData({ ...formData, message: e.target.value })
-          }
-          className="w-full rounded-lg border border-gray-300 px-4 py-3 text-gray-900 placeholder-gray-400 focus:border-blue-500 focus:ring-2 focus:ring-blue-500 focus:outline-none"
-          placeholder="Tell us about your project..."
+          onChange={(e) => setFormData({ ...formData, message: e.target.value })}
+          placeholder="Tell us more (optional)"
+          className="w-full resize-none rounded-lg border border-slate-200 bg-slate-50 px-4 py-3 text-slate-900 placeholder-slate-400 transition-colors focus:border-amber-500 focus:bg-white focus:outline-none focus:ring-2 focus:ring-amber-500/20"
         />
       </div>
 
+      {/* Submit button - Large, high contrast */}
       <button
         type="submit"
-        className="w-full rounded-lg bg-blue-600 px-6 py-3 text-base font-semibold text-white transition-colors hover:bg-blue-700 focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 focus:outline-none"
+        className="w-full rounded-lg bg-amber-500 py-3.5 text-base font-semibold text-white shadow-lg shadow-amber-500/20 transition-all hover:bg-amber-400 hover:shadow-xl active:scale-[0.98]"
       >
-        Request Free Estimate
+        Get Free Quote
       </button>
+
+      {/* Trust reassurance */}
+      <p className="text-center text-xs text-slate-400">
+        No spam. We respect your privacy.
+      </p>
     </form>
   );
 }
