@@ -224,55 +224,83 @@ export default function Home() {
       </section>
 
       {/* SERVICES SECTION */}
-      <section className="py-20 sm:py-28">
-        <div className="mx-auto max-w-6xl px-5">
-          <AnimateOnScroll animation="fade-up">
-            <div className="text-center">
-              <h2 className="text-sm font-semibold uppercase tracking-wider text-orange-500">
-                Services
+      <section className="relative overflow-hidden py-24 sm:py-32">
+        {/* Sophisticated background */}
+        <div className="absolute inset-0">
+          {/* Base gradient */}
+          <div className="absolute inset-0 bg-gradient-to-b from-[#FAFAFA] via-white to-[#FAFAFA]" />
+
+          {/* Subtle dot pattern */}
+          <div
+            className="absolute inset-0 opacity-[0.4]"
+            style={{
+              backgroundImage: `radial-gradient(circle, #e5e7eb 1px, transparent 1px)`,
+              backgroundSize: '24px 24px'
+            }}
+          />
+
+          {/* Accent glows */}
+          <div className="absolute top-0 right-1/4 h-96 w-96 rounded-full bg-orange-500/5 blur-[100px]" />
+          <div className="absolute bottom-0 left-1/4 h-72 w-72 rounded-full bg-blue-500/5 blur-[80px]" />
+        </div>
+
+        <div className="relative mx-auto max-w-6xl px-5">
+          {/* Header */}
+          <div className="text-center">
+            <AnimateOnScroll animation="fade-up">
+              <div className="mb-6 inline-flex items-center gap-2 rounded-full border border-orange-200 bg-orange-50 px-4 py-2">
+                <svg className="h-4 w-4 text-orange-500" fill="none" stroke="currentColor" strokeWidth={2} viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" d="M11.42 15.17L17.25 21A2.652 2.652 0 0021 17.25l-5.877-5.877M11.42 15.17l2.496-3.03c.317-.384.74-.626 1.208-.766M11.42 15.17l-4.655 5.653a2.548 2.548 0 11-3.586-3.586l6.837-5.63m5.108-.233c.55-.164 1.163-.188 1.743-.14a4.5 4.5 0 004.486-6.336l-3.276 3.277a3.004 3.004 0 01-2.25-2.25l3.276-3.276a4.5 4.5 0 00-6.336 4.486c.091 1.076-.071 2.264-.904 2.95l-.102.085m-1.745 1.437L5.909 7.5H4.5L2.25 3.75l1.5-1.5L7.5 4.5v1.409l4.26 4.26m-1.745 1.437l1.745-1.437m6.615 8.206L15.75 15.75M4.867 19.125h.008v.008h-.008v-.008z" />
+                </svg>
+                <span className="text-sm font-medium text-orange-700">Professional Home Services</span>
+              </div>
+            </AnimateOnScroll>
+
+            <AnimateOnScroll animation="fade-up" delay={100}>
+              <h2 className="text-4xl font-bold tracking-tight text-[#111827] sm:text-5xl">
+                <span className="block">What We</span>
+                <span className="block mt-1 text-transparent bg-clip-text bg-gradient-to-r from-orange-500 to-orange-600">
+                  Do Best
+                </span>
               </h2>
-              <p className="mt-2 text-3xl font-bold text-[#111827] sm:text-4xl">
-                What We Do
-              </p>
-              <p className="mx-auto mt-4 max-w-2xl text-[#374151]">
+            </AnimateOnScroll>
+
+            <AnimateOnScroll animation="fade-up" delay={200}>
+              <p className="mx-auto mt-6 max-w-2xl text-lg text-[#374151]">
                 From small repairs to complete renovations, we deliver quality craftsmanship on every project.
               </p>
-            </div>
-          </AnimateOnScroll>
+            </AnimateOnScroll>
+          </div>
 
-          <div className="mx-auto mt-14 grid max-w-5xl gap-4 sm:grid-cols-2 lg:grid-cols-3">
+          {/* Services Grid */}
+          <div className="mx-auto mt-16 grid max-w-5xl gap-5 sm:grid-cols-2 lg:grid-cols-3">
             {siteConfig.services.map((service, index) => {
               const IconComponent = serviceIcons[service.title] || RepairsIcon;
               return (
-                <AnimateOnScroll key={service.title} animation="fade-up" delay={index * 80}>
-                  <div className="group relative h-full overflow-hidden rounded-2xl border border-gray-100 bg-white p-6 shadow-sm transition-all duration-500 hover:border-orange-200 hover:shadow-xl hover:shadow-orange-500/10 sm:p-8">
+                <AnimateOnScroll key={service.title} animation="fade-up" delay={100 + index * 80}>
+                  <div className="group relative h-full overflow-hidden rounded-2xl border border-gray-200/80 bg-white p-7 shadow-sm transition-all duration-500 hover:border-orange-300 hover:shadow-2xl hover:shadow-orange-500/10 hover:-translate-y-1">
                     {/* Gradient hover effect */}
-                    <div className="absolute inset-0 bg-gradient-to-br from-orange-50 to-transparent opacity-0 transition-opacity duration-500 group-hover:opacity-100" />
+                    <div className="absolute inset-0 bg-gradient-to-br from-orange-50/80 via-transparent to-transparent opacity-0 transition-opacity duration-500 group-hover:opacity-100" />
+
+                    {/* Decorative corner accent */}
+                    <div className="absolute -top-10 -right-10 h-20 w-20 rounded-full bg-orange-500/5 transition-transform duration-500 group-hover:scale-150" />
 
                     {/* Content */}
                     <div className="relative">
                       {/* Icon container */}
-                      <div className="mb-5 inline-flex h-14 w-14 items-center justify-center rounded-xl bg-orange-50 text-orange-500 transition-all duration-300 group-hover:bg-orange-500 group-hover:text-white group-hover:scale-110 group-hover:shadow-lg group-hover:shadow-orange-500/25">
+                      <div className="mb-5 inline-flex h-14 w-14 items-center justify-center rounded-xl bg-gradient-to-br from-orange-50 to-orange-100 text-orange-500 transition-all duration-300 group-hover:from-orange-500 group-hover:to-orange-600 group-hover:text-white group-hover:scale-110 group-hover:shadow-lg group-hover:shadow-orange-500/30">
                         <IconComponent />
                       </div>
 
                       {/* Title */}
-                      <h3 className="text-lg font-semibold text-[#111827] transition-colors duration-300 group-hover:text-orange-600">
+                      <h3 className="text-lg font-bold text-[#111827] transition-colors duration-300 group-hover:text-orange-600">
                         {service.title}
                       </h3>
 
                       {/* Description */}
-                      <p className="mt-2 text-sm leading-relaxed text-[#374151]">
+                      <p className="mt-3 text-sm leading-relaxed text-[#4b5563]">
                         {service.description}
                       </p>
-
-                      {/* Arrow indicator */}
-                      <div className="mt-4 flex items-center text-sm font-medium text-orange-500 opacity-0 transition-all duration-300 group-hover:opacity-100">
-                        <span>Learn more</span>
-                        <svg className="ml-1 h-4 w-4 transition-transform group-hover:translate-x-1" fill="none" stroke="currentColor" strokeWidth={2} viewBox="0 0 24 24">
-                          <path strokeLinecap="round" strokeLinejoin="round" d="M17 8l4 4m0 0l-4 4m4-4H3" />
-                        </svg>
-                      </div>
                     </div>
                   </div>
                 </AnimateOnScroll>
@@ -281,15 +309,20 @@ export default function Home() {
           </div>
 
           {/* CTA under services */}
-          <AnimateOnScroll animation="fade-up" delay={600}>
-            <div className="mt-12 text-center">
-              <p className="text-[#374151]">
-                Don&apos;t see what you need?{" "}
-                <a href={`tel:${siteConfig.phoneDigits}`} className="font-semibold text-orange-500 underline-offset-2 hover:underline">
-                  Give us a call
+          <AnimateOnScroll animation="fade-up" delay={700}>
+            <div className="mt-14 text-center">
+              <div className="inline-flex items-center gap-3 rounded-full border border-gray-200 bg-white px-6 py-3 shadow-sm">
+                <span className="text-[#374151]">Don&apos;t see what you need?</span>
+                <a
+                  href={`tel:${siteConfig.phoneDigits}`}
+                  className="inline-flex items-center gap-2 font-semibold text-orange-500 transition-colors hover:text-orange-600"
+                >
+                  <span>Give us a call</span>
+                  <svg className="h-4 w-4" fill="none" stroke="currentColor" strokeWidth={2} viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" d="M17 8l4 4m0 0l-4 4m4-4H3" />
+                  </svg>
                 </a>
-                {" "}— we do it all.
-              </p>
+              </div>
             </div>
           </AnimateOnScroll>
         </div>
