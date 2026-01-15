@@ -2,9 +2,9 @@ export const siteConfig = {
   businessName: "Ibarra HomeWorks",
   primaryService: "Remodeling & Repairs",
   city: "Bayamón, PR",
-  phoneDisplay: "(787) 555-0123",
-  phoneDigits: "7875550123",
-  whatsappDigits: "7875550123",
+  phoneDisplay: "(939) 387-1485",
+  phoneDigits: "9393871485",
+  whatsappDigits: "19393871485",
   hours: "Mon–Sat 8am–6pm",
   responseTime: "Replies within 1 hour",
 
