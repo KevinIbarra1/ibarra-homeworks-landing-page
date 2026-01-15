@@ -1,8 +1,11 @@
 @import "tailwindcss";
 
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  --background: #FAFAFA;
+  --foreground: #111827;
+  --primary: #111827;
+  --secondary: #374151;
+  --accent: #F97316;
 }
 
 @theme inline {
@@ -33,26 +36,17 @@ html {
 /* Focus states for accessibility */
 a:focus-visible,
 button:focus-visible {
-  outline: 2px solid #2563eb;
+  outline: 2px solid #F97316;
   outline-offset: 2px;
 }
 
 /* Selection color */
 ::selection {
-  background-color: #2563eb;
+  background-color: #F97316;
   color: white;
 }
 
-/* Safe area padding for mobile devices with notches/home indicators */
+/* Safe area padding for mobile devices */
 .pb-safe {
   padding-bottom: env(safe-area-inset-bottom, 0);
-}
-
-/* Hide scrollbar but keep functionality */
-.scrollbar-hide {
-  -ms-overflow-style: none;
-  scrollbar-width: none;
-}
-.scrollbar-hide::-webkit-scrollbar {
-  display: none;
 }

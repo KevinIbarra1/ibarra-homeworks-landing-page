@@ -1,12 +1,10 @@
 import StickyHeader from "@/components/StickyHeader";
-import ContactForm from "@/components/ContactForm";
 import MobileFloatingCTA from "@/components/MobileFloatingCTA";
 import { siteConfig } from "@/lib/siteConfig";
 
-// Minimal, purposeful icons
 function StarIcon() {
   return (
-    <svg className="h-4 w-4 fill-amber-400" viewBox="0 0 20 20">
+    <svg className="h-4 w-4 fill-orange-500" viewBox="0 0 20 20">
       <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
     </svg>
   );
@@ -28,157 +26,108 @@ function WhatsAppIcon({ className = "h-5 w-5" }: { className?: string }) {
   );
 }
 
-function CheckCircleIcon() {
+function CheckIcon() {
   return (
-    <svg className="h-5 w-5 text-emerald-500" fill="currentColor" viewBox="0 0 20 20">
-      <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clipRule="evenodd" />
+    <svg className="h-5 w-5 text-orange-500" fill="none" stroke="currentColor" strokeWidth={2} viewBox="0 0 24 24">
+      <path strokeLinecap="round" strokeLinejoin="round" d="M5 13l4 4L19 7" />
     </svg>
   );
 }
 
 export default function Home() {
-  // Only show top 3 testimonials for social proof
   const featuredReviews = siteConfig.testimonials.slice(0, 3);
 
   return (
-    <div className="bg-slate-50">
-      {/*
-        HERO SECTION
-        - Full viewport height for impact
-        - Strong visual hierarchy: Headline > Subhead > CTA
-        - Form above the fold for immediate conversion opportunity
-      */}
-      <section className="relative min-h-screen bg-gradient-to-b from-slate-900 via-slate-800 to-slate-900">
+    <div className="bg-[#FAFAFA]">
+      {/* HERO SECTION - Clean, focused on CTA */}
+      <section className="relative min-h-[85vh] bg-[#111827]">
         <StickyHeader />
 
-        {/* Subtle background texture */}
-        <div className="absolute inset-0 bg-[radial-gradient(circle_at_30%_20%,rgba(59,130,246,0.08),transparent_50%)]" />
+        <div className="absolute inset-0 bg-gradient-to-br from-[#374151]/20 to-transparent" />
 
-        <div className="relative mx-auto max-w-6xl px-5 pb-20 pt-12 md:pt-20">
-          <div className="grid gap-12 lg:grid-cols-2 lg:gap-20">
-            {/* Left: Value Proposition */}
-            <div className="flex flex-col justify-center">
-              {/* Trust badge - Small, unobtrusive */}
-              <div className="mb-6 inline-flex w-fit items-center gap-2 rounded-full bg-white/10 px-3 py-1.5 text-xs font-medium text-slate-300">
-                <span className="flex gap-0.5">
-                  {[...Array(5)].map((_, i) => (
-                    <StarIcon key={i} />
-                  ))}
-                </span>
-                <span>500+ Happy Customers</span>
-              </div>
-
-              {/*
-                HEADLINE
-                - Largest text on page (visual hierarchy)
-                - Clear value proposition
-                - Location for local SEO
-              */}
-              <h1 className="text-4xl font-bold tracking-tight text-white sm:text-5xl lg:text-6xl">
-                Transform Your Home with Expert Remodeling
-              </h1>
-
-              {/*
-                SUBHEADLINE
-                - Supporting info, smaller than headline
-                - Addresses key concerns: quality, trust, ease
-              */}
-              <p className="mt-6 text-lg leading-relaxed text-slate-300 sm:text-xl">
-                Professional renovations in Bayamón. Licensed, insured, and committed to quality craftsmanship.
-              </p>
-
-              {/*
-                VALUE PROPS
-                - Quick-scan bullet points (Gestalt: proximity)
-                - Addresses objections before they arise
-              */}
-              <ul className="mt-8 space-y-3">
-                {["Free estimates, no obligation", "Licensed & fully insured", "15+ years of experience"].map((item) => (
-                  <li key={item} className="flex items-center gap-3 text-slate-200">
-                    <CheckCircleIcon />
-                    <span>{item}</span>
-                  </li>
-                ))}
-              </ul>
-
-              {/*
-                CTAs - Desktop
-                - Primary action: Phone (high intent)
-                - Secondary: WhatsApp (lower friction)
-                - Large touch targets (Fitts's Law: 48px min)
-              */}
-              <div className="mt-10 hidden flex-col gap-4 sm:flex sm:flex-row">
-                <a
-                  href={`tel:${siteConfig.phoneDigits}`}
-                  className="inline-flex items-center justify-center gap-2.5 rounded-xl bg-amber-500 px-7 py-4 text-base font-semibold text-white shadow-lg shadow-amber-500/25 transition-all hover:bg-amber-400 hover:shadow-xl hover:shadow-amber-500/30 active:scale-[0.98]"
-                >
-                  <PhoneIcon />
-                  <span>Call {siteConfig.phoneDisplay}</span>
-                </a>
-                <a
-                  href={`https://wa.me/${siteConfig.whatsappDigits}`}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="inline-flex items-center justify-center gap-2.5 rounded-xl bg-white/10 px-7 py-4 text-base font-semibold text-white backdrop-blur-sm transition-all hover:bg-white/20 active:scale-[0.98]"
-                >
-                  <WhatsAppIcon />
-                  <span>WhatsApp</span>
-                </a>
-              </div>
-            </div>
-
-            {/*
-              Right: Contact Form
-              - Above the fold for immediate conversion
-              - Card design creates visual separation
-              - Reduced fields = reduced friction
-            */}
-            <div className="flex items-center">
-              <div className="w-full rounded-2xl bg-white p-6 shadow-2xl shadow-black/20 sm:p-8">
-                <div className="mb-6">
-                  <h2 className="text-xl font-bold text-slate-900 sm:text-2xl">
-                    Get Your Free Quote
-                  </h2>
-                  <p className="mt-1 text-slate-500">
-                    We respond within 2 hours
-                  </p>
-                </div>
-                <ContactForm />
-              </div>
-            </div>
+        <div className="relative mx-auto flex min-h-[70vh] max-w-4xl flex-col items-center justify-center px-5 text-center">
+          {/* Trust badge */}
+          <div className="mb-8 inline-flex items-center gap-2 rounded-full bg-white/10 px-4 py-2 text-sm font-medium text-gray-300">
+            <span className="flex gap-0.5">
+              {[...Array(5)].map((_, i) => (
+                <StarIcon key={i} />
+              ))}
+            </span>
+            <span>500+ Happy Customers</span>
           </div>
+
+          {/* Headline */}
+          <h1 className="text-4xl font-bold tracking-tight text-white sm:text-5xl lg:text-6xl">
+            Home Remodeling & Repairs Done Right
+          </h1>
+
+          {/* Subheadline */}
+          <p className="mx-auto mt-6 max-w-2xl text-lg text-gray-400 sm:text-xl">
+            Professional renovations in Bayamón. Licensed, insured, and ready to transform your home.
+          </p>
+
+          {/* Trust points */}
+          <div className="mt-8 flex flex-wrap justify-center gap-x-6 gap-y-2 text-sm text-gray-300">
+            <span className="flex items-center gap-2">
+              <CheckIcon />
+              Free Estimates
+            </span>
+            <span className="flex items-center gap-2">
+              <CheckIcon />
+              Licensed & Insured
+            </span>
+            <span className="flex items-center gap-2">
+              <CheckIcon />
+              15+ Years Experience
+            </span>
+          </div>
+
+          {/* CTAs - Prominent call buttons */}
+          <div className="mt-12 flex flex-col gap-4 sm:flex-row">
+            <a
+              href={`tel:${siteConfig.phoneDigits}`}
+              className="inline-flex items-center justify-center gap-3 rounded-xl bg-orange-500 px-8 py-4 text-lg font-semibold text-white shadow-lg shadow-orange-500/25 transition-all hover:bg-orange-400 hover:shadow-xl hover:shadow-orange-500/30 active:scale-[0.98]"
+            >
+              <PhoneIcon className="h-6 w-6" />
+              <span>Call {siteConfig.phoneDisplay}</span>
+            </a>
+            <a
+              href={`https://wa.me/${siteConfig.whatsappDigits}`}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex items-center justify-center gap-3 rounded-xl bg-green-600 px-8 py-4 text-lg font-semibold text-white shadow-lg shadow-green-600/25 transition-all hover:bg-green-500 hover:shadow-xl active:scale-[0.98]"
+            >
+              <WhatsAppIcon className="h-6 w-6" />
+              <span>WhatsApp Us</span>
+            </a>
+          </div>
+
+          {/* Response time */}
+          <p className="mt-6 text-sm text-gray-500">
+            We respond within 1 hour
+          </p>
         </div>
       </section>
 
-      {/*
-        SERVICES SECTION
-        - Simple, scannable list
-        - No descriptions = faster comprehension
-        - Visual hierarchy through spacing
-      */}
+      {/* SERVICES SECTION */}
       <section className="py-20 sm:py-28">
         <div className="mx-auto max-w-6xl px-5">
           <div className="text-center">
-            <h2 className="text-sm font-semibold uppercase tracking-wider text-amber-600">
+            <h2 className="text-sm font-semibold uppercase tracking-wider text-orange-500">
               Services
             </h2>
-            <p className="mt-2 text-3xl font-bold text-slate-900 sm:text-4xl">
+            <p className="mt-2 text-3xl font-bold text-[#111827] sm:text-4xl">
               What We Do
             </p>
           </div>
 
-          {/*
-            Service grid
-            - Even spacing creates visual harmony (Gestalt: proximity)
-            - Hover states provide interactivity feedback
-          */}
           <div className="mx-auto mt-12 grid max-w-4xl grid-cols-2 gap-3 sm:grid-cols-3 sm:gap-4">
             {siteConfig.services.map((service) => (
               <div
                 key={service.title}
-                className="group rounded-xl border border-slate-200 bg-white p-5 text-center transition-all hover:border-amber-200 hover:shadow-md sm:p-6"
+                className="group rounded-xl border border-gray-200 bg-white p-5 text-center transition-all hover:border-orange-200 hover:shadow-md sm:p-6"
               >
-                <p className="font-semibold text-slate-800 transition-colors group-hover:text-amber-600">
+                <p className="font-semibold text-[#111827] transition-colors group-hover:text-orange-500">
                   {service.title}
                 </p>
               </div>
@@ -187,19 +136,14 @@ export default function Home() {
         </div>
       </section>
 
-      {/*
-        SOCIAL PROOF SECTION
-        - Reviews build trust near conversion points
-        - Only 3 reviews = digestible, not overwhelming
-        - Star ratings provide quick visual validation
-      */}
-      <section className="border-y border-slate-200 bg-white py-20 sm:py-28">
+      {/* REVIEWS SECTION */}
+      <section className="border-y border-gray-200 bg-white py-20 sm:py-28">
         <div className="mx-auto max-w-6xl px-5">
           <div className="text-center">
-            <h2 className="text-sm font-semibold uppercase tracking-wider text-amber-600">
+            <h2 className="text-sm font-semibold uppercase tracking-wider text-orange-500">
               Reviews
             </h2>
-            <p className="mt-2 text-3xl font-bold text-slate-900 sm:text-4xl">
+            <p className="mt-2 text-3xl font-bold text-[#111827] sm:text-4xl">
               Trusted by Homeowners
             </p>
           </div>
@@ -208,25 +152,20 @@ export default function Home() {
             {featuredReviews.map((review, index) => (
               <figure
                 key={index}
-                className="rounded-2xl bg-slate-50 p-6 sm:p-8"
+                className="rounded-2xl bg-[#FAFAFA] p-6 sm:p-8"
               >
-                {/* Star rating */}
                 <div className="flex gap-1">
                   {[...Array(5)].map((_, i) => (
                     <StarIcon key={i} />
                   ))}
                 </div>
-
-                {/* Quote */}
-                <blockquote className="mt-4 text-slate-700">
+                <blockquote className="mt-4 text-[#374151]">
                   &ldquo;{review.text}&rdquo;
                 </blockquote>
-
-                {/* Attribution */}
                 <figcaption className="mt-4 text-sm">
-                  <span className="font-semibold text-slate-900">{review.name}</span>
-                  <span className="text-slate-400"> · </span>
-                  <span className="text-slate-500">{review.city}</span>
+                  <span className="font-semibold text-[#111827]">{review.name}</span>
+                  <span className="text-gray-400"> · </span>
+                  <span className="text-[#374151]">{review.city}</span>
                 </figcaption>
               </figure>
             ))}
@@ -234,65 +173,50 @@ export default function Home() {
         </div>
       </section>
 
-      {/*
-        FINAL CTA SECTION
-        - Creates urgency without being pushy
-        - Repeats value prop for skimmers
-        - High contrast for attention
-      */}
-      <section className="bg-slate-900 py-20 sm:py-28">
+      {/* FINAL CTA SECTION */}
+      <section className="bg-[#111827] py-20 sm:py-28">
         <div className="mx-auto max-w-3xl px-5 text-center">
           <h2 className="text-3xl font-bold text-white sm:text-4xl lg:text-5xl">
-            Ready to Start?
+            Ready to Get Started?
           </h2>
-          <p className="mx-auto mt-4 max-w-xl text-lg text-slate-400">
-            Get a free estimate today. No pressure, no obligation.
+          <p className="mx-auto mt-4 max-w-xl text-lg text-gray-400">
+            Give us a call today. Free estimates, no obligation.
           </p>
 
-          {/*
-            CTA buttons
-            - Primary: High contrast amber
-            - Large touch targets for thumb-friendliness
-          */}
           <div className="mt-10 flex flex-col justify-center gap-4 sm:flex-row">
             <a
               href={`tel:${siteConfig.phoneDigits}`}
-              className="inline-flex items-center justify-center gap-2.5 rounded-xl bg-amber-500 px-8 py-4 text-base font-semibold text-white shadow-lg shadow-amber-500/25 transition-all hover:bg-amber-400 hover:shadow-xl active:scale-[0.98]"
+              className="inline-flex items-center justify-center gap-3 rounded-xl bg-orange-500 px-8 py-4 text-lg font-semibold text-white shadow-lg shadow-orange-500/25 transition-all hover:bg-orange-400 hover:shadow-xl active:scale-[0.98]"
             >
-              <PhoneIcon />
+              <PhoneIcon className="h-6 w-6" />
               <span>{siteConfig.phoneDisplay}</span>
             </a>
             <a
               href={`https://wa.me/${siteConfig.whatsappDigits}`}
               target="_blank"
               rel="noopener noreferrer"
-              className="inline-flex items-center justify-center gap-2.5 rounded-xl bg-emerald-600 px-8 py-4 text-base font-semibold text-white shadow-lg shadow-emerald-600/25 transition-all hover:bg-emerald-500 hover:shadow-xl active:scale-[0.98]"
+              className="inline-flex items-center justify-center gap-3 rounded-xl bg-green-600 px-8 py-4 text-lg font-semibold text-white shadow-lg shadow-green-600/25 transition-all hover:bg-green-500 hover:shadow-xl active:scale-[0.98]"
             >
-              <WhatsAppIcon />
+              <WhatsAppIcon className="h-6 w-6" />
               <span>WhatsApp</span>
             </a>
           </div>
         </div>
       </section>
 
-      {/*
-        FOOTER
-        - Minimal, functional
-        - Only essential info
-      */}
-      <footer className="border-t border-slate-200 bg-white py-10">
+      {/* FOOTER */}
+      <footer className="border-t border-gray-200 bg-white py-10">
         <div className="mx-auto max-w-6xl px-5 text-center">
-          <p className="font-semibold text-slate-900">{siteConfig.businessName}</p>
-          <p className="mt-1 text-sm text-slate-500">
+          <p className="font-semibold text-[#111827]">{siteConfig.businessName}</p>
+          <p className="mt-1 text-sm text-[#374151]">
             Serving Bayamón, San Juan, Guaynabo & surrounding areas
           </p>
-          <p className="mt-6 text-xs text-slate-400">
+          <p className="mt-6 text-xs text-gray-400">
             © {new Date().getFullYear()} {siteConfig.businessName}. All rights reserved.
           </p>
         </div>
       </footer>
 
-      {/* Mobile floating CTA - Always accessible (Fitts's Law) */}
       <MobileFloatingCTA />
     </div>
   );

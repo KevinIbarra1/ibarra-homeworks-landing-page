@@ -27,19 +27,19 @@ export default function StickyHeader() {
         <a
           href="#"
           className={`text-lg font-bold transition-colors ${
-            scrolled ? "text-slate-900" : "text-white"
+            scrolled ? "text-[#111827]" : "text-white"
           }`}
         >
           {siteConfig.businessName}
         </a>
 
-        {/* Single CTA - Reduces choice paralysis (Hick's Law) */}
+        {/* Single CTA */}
         <a
           href={`tel:${siteConfig.phoneDigits}`}
           className={`rounded-full px-5 py-2.5 text-sm font-semibold transition-all ${
             scrolled
-              ? "bg-amber-500 text-white hover:bg-amber-600"
-              : "bg-white/20 text-white backdrop-blur-sm hover:bg-white/30"
+              ? "bg-orange-500 text-white hover:bg-orange-400"
+              : "bg-white/15 text-white backdrop-blur-sm hover:bg-white/25"
           }`}
         >
           Get Free Quote

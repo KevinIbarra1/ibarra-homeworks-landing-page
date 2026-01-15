@@ -1,5 +1,5 @@
 export const siteConfig = {
-  businessName: "Island Home Services",
+  businessName: "Ibarra HomeWorks",
   primaryService: "Remodeling & Repairs",
   city: "Bayamón, PR",
   phoneDisplay: "(787) 555-0123",

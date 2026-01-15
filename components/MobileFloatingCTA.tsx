@@ -18,23 +18,13 @@ function WhatsAppIcon() {
   );
 }
 
-/**
- * Mobile Floating CTA
- *
- * UI/UX Principles Applied:
- * - Fitts's Law: Large touch targets always within thumb reach
- * - Persistence: CTA always visible, reducing friction
- * - Safe area: Respects device safe areas (notches, home indicators)
- * - Visual hierarchy: Primary (Call) vs Secondary (WhatsApp) distinction
- */
 export default function MobileFloatingCTA() {
   return (
-    <div className="fixed bottom-0 left-0 right-0 z-50 border-t border-slate-200 bg-white/95 p-3 backdrop-blur-sm sm:hidden">
-      {/* Safe area padding for devices with home indicators */}
+    <div className="fixed bottom-0 left-0 right-0 z-50 border-t border-gray-200 bg-white/95 p-3 backdrop-blur-sm sm:hidden">
       <div className="flex gap-3 pb-safe">
         <a
           href={`tel:${siteConfig.phoneDigits}`}
-          className="flex flex-1 items-center justify-center gap-2 rounded-xl bg-amber-500 py-3.5 text-sm font-semibold text-white shadow-lg shadow-amber-500/20 active:scale-[0.98]"
+          className="flex flex-1 items-center justify-center gap-2 rounded-xl bg-orange-500 py-3.5 text-sm font-semibold text-white shadow-lg shadow-orange-500/20 active:scale-[0.98]"
         >
           <PhoneIcon />
           <span>Call Now</span>
@@ -43,7 +33,7 @@ export default function MobileFloatingCTA() {
           href={`https://wa.me/${siteConfig.whatsappDigits}`}
           target="_blank"
           rel="noopener noreferrer"
-          className="flex flex-1 items-center justify-center gap-2 rounded-xl bg-emerald-600 py-3.5 text-sm font-semibold text-white shadow-lg shadow-emerald-600/20 active:scale-[0.98]"
+          className="flex flex-1 items-center justify-center gap-2 rounded-xl bg-green-600 py-3.5 text-sm font-semibold text-white shadow-lg shadow-green-600/20 active:scale-[0.98]"
         >
           <WhatsAppIcon />
           <span>WhatsApp</span>
