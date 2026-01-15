@@ -1,17 +1,8 @@
 import React from "react";
 import StickyHeader from "@/components/StickyHeader";
-import MobileFloatingCTA from "@/components/MobileFloatingCTA";
 import AnimateOnScroll from "@/components/AnimateOnScroll";
 import TestimonialCarousel from "@/components/TestimonialCarousel";
 import { siteConfig } from "@/lib/siteConfig";
-
-function StarIcon() {
-  return (
-    <svg className="h-4 w-4 fill-orange-500" viewBox="0 0 20 20">
-      <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
-    </svg>
-  );
-}
 
 function PhoneIcon({ className = "h-5 w-5" }: { className?: string }) {
   return (
@@ -25,14 +16,6 @@ function WhatsAppIcon({ className = "h-5 w-5" }: { className?: string }) {
   return (
     <svg className={className} fill="currentColor" viewBox="0 0 24 24">
       <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z" />
-    </svg>
-  );
-}
-
-function CheckIcon() {
-  return (
-    <svg className="h-5 w-5 text-orange-500" fill="none" stroke="currentColor" strokeWidth={2} viewBox="0 0 24 24">
-      <path strokeLinecap="round" strokeLinejoin="round" d="M5 13l4 4L19 7" />
     </svg>
   );
 }
@@ -99,86 +82,143 @@ export default function Home() {
   return (
     <div className="bg-[#FAFAFA]">
       {/* HERO SECTION */}
-      <section className="relative min-h-[85vh] overflow-hidden bg-[#111827]">
+      <section className="relative min-h-screen overflow-hidden bg-[#111827]">
         <StickyHeader />
 
-        {/* Animated background */}
-        <div className="absolute inset-0 bg-gradient-to-br from-[#374151]/20 to-transparent" />
-        <div className="absolute inset-0 bg-[radial-gradient(circle_at_30%_20%,rgba(249,115,22,0.08),transparent_50%)]" />
+        {/* Sophisticated background layers */}
+        <div className="absolute inset-0">
+          {/* Base gradient */}
+          <div className="absolute inset-0 bg-gradient-to-b from-[#111827] via-[#111827] to-[#1a202c]" />
 
-        {/* Floating orbs */}
-        <div className="absolute inset-0 overflow-hidden">
-          <div className="absolute top-1/4 left-1/4 h-64 w-64 rounded-full bg-orange-500/5 blur-3xl animate-float" />
-          <div className="absolute bottom-1/4 right-1/4 h-96 w-96 rounded-full bg-orange-500/5 blur-3xl animate-float" style={{ animationDelay: "1s" }} />
+          {/* Subtle grid pattern */}
+          <div
+            className="absolute inset-0 opacity-[0.03]"
+            style={{
+              backgroundImage: `linear-gradient(rgba(255,255,255,0.1) 1px, transparent 1px),
+                               linear-gradient(90deg, rgba(255,255,255,0.1) 1px, transparent 1px)`,
+              backgroundSize: '60px 60px'
+            }}
+          />
+
+          {/* Radial glow */}
+          <div className="absolute top-0 left-1/2 -translate-x-1/2 h-[800px] w-[800px] rounded-full bg-gradient-to-b from-orange-500/10 via-orange-500/5 to-transparent blur-3xl" />
+
+          {/* Accent orbs */}
+          <div className="absolute top-1/3 left-[15%] h-72 w-72 rounded-full bg-orange-500/8 blur-[100px] animate-float" />
+          <div className="absolute bottom-1/4 right-[10%] h-96 w-96 rounded-full bg-blue-500/5 blur-[120px] animate-float" style={{ animationDelay: "2s" }} />
         </div>
 
-        <div className="relative mx-auto flex min-h-[70vh] max-w-4xl flex-col items-center justify-center px-5 text-center">
-          {/* Trust badge */}
-          <div className="animate-fade-in-up mb-8 inline-flex items-center gap-2 rounded-full bg-white/10 px-4 py-2 text-sm font-medium text-gray-300 backdrop-blur-sm">
-            <span className="flex gap-0.5">
-              {[...Array(5)].map((_, i) => (
-                <StarIcon key={i} />
-              ))}
-            </span>
-            <span>500+ Happy Customers</span>
+        {/* Main content */}
+        <div className="relative mx-auto flex min-h-screen max-w-5xl flex-col items-center justify-center px-5 pt-20 pb-24">
+
+          {/* Location badge */}
+          <div className="animate-fade-in-up mb-6">
+            <div className="inline-flex items-center gap-2 rounded-full border border-white/10 bg-white/5 px-4 py-2 backdrop-blur-sm">
+              <span className="relative flex h-2 w-2">
+                <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-green-400 opacity-75"></span>
+                <span className="relative inline-flex h-2 w-2 rounded-full bg-green-500"></span>
+              </span>
+              <span className="text-sm font-medium text-gray-300">Serving Bayamón & Greater San Juan</span>
+            </div>
           </div>
 
-          {/* Headline */}
-          <h1 className="animate-text-reveal text-4xl font-bold tracking-tight text-white sm:text-5xl lg:text-6xl">
-            Home Remodeling & Repairs Done Right
-          </h1>
+          {/* Main headline with accent */}
+          <div className="animate-fade-in-up text-center" style={{ animationDelay: "100ms" }}>
+            <h1 className="text-4xl font-bold tracking-tight text-white sm:text-5xl md:text-6xl lg:text-7xl">
+              <span className="block">Home Remodeling</span>
+              <span className="block mt-2">
+                <span className="text-transparent bg-clip-text bg-gradient-to-r from-orange-400 via-orange-500 to-orange-600">&</span>
+                <span> Repairs</span>
+              </span>
+              <span className="block mt-2 text-transparent bg-clip-text bg-gradient-to-r from-orange-400 to-orange-600">
+                Done Right
+              </span>
+            </h1>
+          </div>
 
           {/* Subheadline */}
-          <p className="animate-fade-in-up mx-auto mt-6 max-w-2xl text-lg text-gray-400 sm:text-xl" style={{ animationDelay: "200ms" }}>
-            Professional renovations in Bayamón. Licensed, insured, and ready to transform your home.
+          <p className="animate-fade-in-up mx-auto mt-8 max-w-2xl text-center text-lg text-gray-400 sm:text-xl" style={{ animationDelay: "200ms" }}>
+            Transform your home with confidence. Professional craftsmanship,
+            transparent pricing, and results that last.
           </p>
 
-          {/* Trust points */}
-          <div className="mt-8 flex flex-wrap justify-center gap-x-6 gap-y-2 text-sm text-gray-300">
-            {["Free Estimates", "Licensed & Insured", "15+ Years Experience"].map((item, i) => (
-              <span
-                key={item}
-                className="animate-fade-in-up flex items-center gap-2"
-                style={{ animationDelay: `${300 + i * 100}ms` }}
-              >
-                <CheckIcon />
-                {item}
-              </span>
+          {/* Trust indicators */}
+          <div className="animate-fade-in-up mt-10 flex flex-wrap items-center justify-center gap-x-8 gap-y-4" style={{ animationDelay: "300ms" }}>
+            {[
+              { icon: "clock", label: "15+ Years Experience" },
+              { icon: "star", label: "100+ Projects Done" },
+              { icon: "check", label: "Free Estimates" },
+            ].map((item) => (
+              <div key={item.label} className="flex items-center gap-2 text-gray-300">
+                <div className="flex h-8 w-8 items-center justify-center rounded-lg bg-orange-500/10">
+                  {item.icon === "clock" && (
+                    <svg className="h-4 w-4 text-orange-500" fill="none" stroke="currentColor" strokeWidth={2} viewBox="0 0 24 24">
+                      <path strokeLinecap="round" strokeLinejoin="round" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
+                    </svg>
+                  )}
+                  {item.icon === "star" && (
+                    <svg className="h-4 w-4 text-orange-500" fill="currentColor" viewBox="0 0 20 20">
+                      <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
+                    </svg>
+                  )}
+                  {item.icon === "check" && (
+                    <svg className="h-4 w-4 text-orange-500" fill="none" stroke="currentColor" strokeWidth={2} viewBox="0 0 24 24">
+                      <path strokeLinecap="round" strokeLinejoin="round" d="M5 13l4 4L19 7" />
+                    </svg>
+                  )}
+                </div>
+                <span className="text-sm font-medium">{item.label}</span>
+              </div>
             ))}
           </div>
 
-          {/* CTAs */}
-          <div className="mt-12 flex flex-col gap-4 sm:flex-row">
+          {/* CTA Buttons */}
+          <div className="animate-fade-in-up mt-12 flex flex-col items-center gap-4 sm:flex-row" style={{ animationDelay: "400ms" }}>
+            {/* Primary CTA - Phone */}
             <a
               href={`tel:${siteConfig.phoneDigits}`}
-              className="animate-fade-in-up animate-pulse-glow group inline-flex items-center justify-center gap-3 rounded-xl bg-orange-500 px-8 py-4 text-lg font-semibold text-white shadow-lg shadow-orange-500/25 transition-all hover:bg-orange-400 hover:scale-105 hover:shadow-xl hover:shadow-orange-500/30 active:scale-[0.98]"
-              style={{ animationDelay: "500ms" }}
+              className="group relative overflow-hidden rounded-2xl bg-gradient-to-r from-orange-500 to-orange-600 px-8 py-4 text-lg font-semibold text-white shadow-2xl shadow-orange-500/30 transition-all duration-300 hover:shadow-orange-500/50 hover:scale-[1.02] active:scale-[0.98]"
             >
-              <PhoneIcon className="h-6 w-6 transition-transform group-hover:rotate-12" />
-              <span>Call {siteConfig.phoneDisplay}</span>
+              {/* Shine effect */}
+              <div className="absolute inset-0 -translate-x-full bg-gradient-to-r from-transparent via-white/20 to-transparent transition-transform duration-700 group-hover:translate-x-full" />
+              <span className="relative flex items-center gap-3">
+                <PhoneIcon className="h-6 w-6 transition-transform group-hover:rotate-12" />
+                <span>Call {siteConfig.phoneDisplay}</span>
+              </span>
             </a>
+
+            {/* Secondary CTA - WhatsApp */}
             <a
               href={`https://wa.me/${siteConfig.whatsappDigits}`}
               target="_blank"
               rel="noopener noreferrer"
-              className="animate-fade-in-up group inline-flex items-center justify-center gap-3 rounded-xl bg-green-600 px-8 py-4 text-lg font-semibold text-white shadow-lg shadow-green-600/25 transition-all hover:bg-green-500 hover:scale-105 hover:shadow-xl active:scale-[0.98]"
-              style={{ animationDelay: "600ms" }}
+              className="group relative overflow-hidden rounded-2xl border-2 border-green-500/50 bg-green-500/10 px-8 py-4 text-lg font-semibold text-white backdrop-blur-sm transition-all duration-300 hover:border-green-400 hover:bg-green-500/20 hover:scale-[1.02] active:scale-[0.98]"
             >
-              <WhatsAppIcon className="h-6 w-6 transition-transform group-hover:scale-110" />
-              <span>WhatsApp Us</span>
+              <span className="relative flex items-center gap-3">
+                <WhatsAppIcon className="h-6 w-6 text-green-400 transition-transform group-hover:scale-110" />
+                <span>WhatsApp Us</span>
+              </span>
             </a>
           </div>
 
-          {/* Response time */}
-          <p className="animate-fade-in-up mt-6 text-sm text-gray-500" style={{ animationDelay: "700ms" }}>
-            We respond within 1 hour
-          </p>
+          {/* Response time badge */}
+          <div className="animate-fade-in-up mt-8 text-center" style={{ animationDelay: "500ms" }}>
+            <p className="inline-flex items-center gap-2 text-sm text-gray-400">
+              <svg className="h-4 w-4 text-green-500" fill="none" stroke="currentColor" strokeWidth={2} viewBox="0 0 24 24">
+                <path strokeLinecap="round" strokeLinejoin="round" d="M5 13l4 4L19 7" />
+              </svg>
+              <span>No obligation • We respond within 1 hour</span>
+            </p>
+          </div>
 
           {/* Scroll indicator */}
-          <div className="absolute bottom-8 left-1/2 -translate-x-1/2 animate-bounce-subtle">
-            <svg className="h-6 w-6 text-gray-500" fill="none" stroke="currentColor" strokeWidth={2} viewBox="0 0 24 24">
-              <path strokeLinecap="round" strokeLinejoin="round" d="M19 14l-7 7m0 0l-7-7m7 7V3" />
-            </svg>
+          <div className="absolute bottom-8 left-1/2 -translate-x-1/2">
+            <div className="flex flex-col items-center gap-2 text-gray-500">
+              <span className="text-xs font-medium uppercase tracking-wider">Scroll</span>
+              <div className="h-10 w-6 rounded-full border-2 border-gray-600 p-1">
+                <div className="h-2 w-1.5 rounded-full bg-gray-500 animate-bounce-subtle mx-auto" />
+              </div>
+            </div>
           </div>
         </div>
       </section>
@@ -294,43 +334,104 @@ export default function Home() {
       </section>
 
       {/* FINAL CTA SECTION */}
-      <section className="relative overflow-hidden bg-[#111827] py-20 sm:py-28">
-        {/* Animated background */}
+      <section className="relative overflow-hidden bg-[#111827] py-24 sm:py-32">
+        {/* Sophisticated background */}
         <div className="absolute inset-0">
-          <div className="absolute top-0 left-1/2 h-96 w-96 -translate-x-1/2 rounded-full bg-orange-500/10 blur-3xl animate-float" />
+          {/* Subtle grid pattern */}
+          <div
+            className="absolute inset-0 opacity-[0.03]"
+            style={{
+              backgroundImage: `linear-gradient(rgba(255,255,255,0.1) 1px, transparent 1px),
+                               linear-gradient(90deg, rgba(255,255,255,0.1) 1px, transparent 1px)`,
+              backgroundSize: '60px 60px'
+            }}
+          />
+
+          {/* Radial glows */}
+          <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 h-[600px] w-[600px] rounded-full bg-gradient-to-b from-orange-500/15 via-orange-500/5 to-transparent blur-3xl" />
+          <div className="absolute top-0 right-0 h-72 w-72 rounded-full bg-orange-500/10 blur-[100px] animate-float" />
+          <div className="absolute bottom-0 left-0 h-96 w-96 rounded-full bg-blue-500/5 blur-[120px] animate-float" style={{ animationDelay: "1.5s" }} />
         </div>
 
-        <div className="relative mx-auto max-w-3xl px-5 text-center">
+        <div className="relative mx-auto max-w-4xl px-5 text-center">
+          {/* Badge */}
           <AnimateOnScroll animation="fade-up">
-            <h2 className="text-3xl font-bold text-white sm:text-4xl lg:text-5xl">
-              Ready to Get Started?
+            <div className="mb-6 inline-flex items-center gap-2 rounded-full border border-orange-500/30 bg-orange-500/10 px-4 py-2 backdrop-blur-sm">
+              <svg className="h-4 w-4 text-orange-500" fill="none" stroke="currentColor" strokeWidth={2} viewBox="0 0 24 24">
+                <path strokeLinecap="round" strokeLinejoin="round" d="M8 12h.01M12 12h.01M16 12h.01M21 12c0 4.418-4.03 8-9 8a9.863 9.863 0 01-4.255-.949L3 20l1.395-3.72C3.512 15.042 3 13.574 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z" />
+              </svg>
+              <span className="text-sm font-medium text-orange-400">Let&apos;s Talk About Your Project</span>
+            </div>
+          </AnimateOnScroll>
+
+          {/* Headline with gradient */}
+          <AnimateOnScroll animation="fade-up" delay={100}>
+            <h2 className="text-4xl font-bold tracking-tight text-white sm:text-5xl lg:text-6xl">
+              <span className="block">Ready to</span>
+              <span className="block mt-2 text-transparent bg-clip-text bg-gradient-to-r from-orange-400 to-orange-600">
+                Get Started?
+              </span>
             </h2>
           </AnimateOnScroll>
 
-          <AnimateOnScroll animation="fade-up" delay={100}>
-            <p className="mx-auto mt-4 max-w-xl text-lg text-gray-400">
-              Give us a call today. Free estimates, no obligation.
+          <AnimateOnScroll animation="fade-up" delay={200}>
+            <p className="mx-auto mt-6 max-w-xl text-lg text-gray-400">
+              Give us a call today for a free estimate. No pressure, no obligation — just honest advice for your home project.
             </p>
           </AnimateOnScroll>
 
-          <AnimateOnScroll animation="fade-up" delay={200}>
-            <div className="mt-10 flex flex-col justify-center gap-4 sm:flex-row">
+          {/* CTA Buttons */}
+          <AnimateOnScroll animation="fade-up" delay={300}>
+            <div className="mt-10 flex flex-col items-center justify-center gap-4 sm:flex-row">
+              {/* Primary CTA - Phone */}
               <a
                 href={`tel:${siteConfig.phoneDigits}`}
-                className="group inline-flex items-center justify-center gap-3 rounded-xl bg-orange-500 px-8 py-4 text-lg font-semibold text-white shadow-lg shadow-orange-500/25 transition-all hover:bg-orange-400 hover:scale-105 hover:shadow-xl active:scale-[0.98]"
+                className="group relative overflow-hidden rounded-2xl bg-gradient-to-r from-orange-500 to-orange-600 px-10 py-5 text-lg font-semibold text-white shadow-2xl shadow-orange-500/30 transition-all duration-300 hover:shadow-orange-500/50 hover:scale-[1.02] active:scale-[0.98]"
               >
-                <PhoneIcon className="h-6 w-6 transition-transform group-hover:rotate-12 group-hover:scale-110" />
-                <span>{siteConfig.phoneDisplay}</span>
+                {/* Shine effect */}
+                <div className="absolute inset-0 -translate-x-full bg-gradient-to-r from-transparent via-white/20 to-transparent transition-transform duration-700 group-hover:translate-x-full" />
+                <span className="relative flex items-center gap-3">
+                  <PhoneIcon className="h-6 w-6 transition-transform group-hover:rotate-12" />
+                  <span>Call {siteConfig.phoneDisplay}</span>
+                </span>
               </a>
+
+              {/* Secondary CTA - WhatsApp */}
               <a
                 href={`https://wa.me/${siteConfig.whatsappDigits}`}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="group inline-flex items-center justify-center gap-3 rounded-xl bg-green-600 px-8 py-4 text-lg font-semibold text-white shadow-lg shadow-green-600/25 transition-all hover:bg-green-500 hover:scale-105 hover:shadow-xl active:scale-[0.98]"
+                className="group relative overflow-hidden rounded-2xl border-2 border-green-500/50 bg-green-500/10 px-10 py-5 text-lg font-semibold text-white backdrop-blur-sm transition-all duration-300 hover:border-green-400 hover:bg-green-500/20 hover:scale-[1.02] active:scale-[0.98]"
               >
-                <WhatsAppIcon className="h-6 w-6 transition-transform group-hover:scale-110" />
-                <span>WhatsApp</span>
+                <span className="relative flex items-center gap-3">
+                  <WhatsAppIcon className="h-6 w-6 text-green-400 transition-transform group-hover:scale-110" />
+                  <span>WhatsApp Us</span>
+                </span>
               </a>
+            </div>
+          </AnimateOnScroll>
+
+          {/* Trust line */}
+          <AnimateOnScroll animation="fade-up" delay={400}>
+            <div className="mt-10 flex flex-wrap items-center justify-center gap-6 text-sm text-gray-500">
+              <span className="flex items-center gap-2">
+                <svg className="h-4 w-4 text-green-500" fill="none" stroke="currentColor" strokeWidth={2} viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" d="M5 13l4 4L19 7" />
+                </svg>
+                Free Estimates
+              </span>
+              <span className="flex items-center gap-2">
+                <svg className="h-4 w-4 text-green-500" fill="none" stroke="currentColor" strokeWidth={2} viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" d="M5 13l4 4L19 7" />
+                </svg>
+                Quick Response
+              </span>
+              <span className="flex items-center gap-2">
+                <svg className="h-4 w-4 text-green-500" fill="none" stroke="currentColor" strokeWidth={2} viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" d="M5 13l4 4L19 7" />
+                </svg>
+                Quality Guaranteed
+              </span>
             </div>
           </AnimateOnScroll>
         </div>
@@ -349,7 +450,6 @@ export default function Home() {
         </div>
       </footer>
 
-      <MobileFloatingCTA />
     </div>
   );
 }
